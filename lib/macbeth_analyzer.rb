@@ -4,11 +4,11 @@ require 'nokogiri'
 class MacbethAnalyzer
   attr_accessor :speeches, :results
 
-  MACBETH_URL = "http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml"
+  URL = "http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml"
   IGNORABLE_SPEAKERS = %w(ALL)
 
   def initialize
-    @document = Nokogiri::HTML(open(MACBETH_URL)) do |config|
+    @document = Nokogiri::HTML(open(URL)) do |config|
       config.strict.noblanks
     end
     @speeches = @document.xpath("//speech")

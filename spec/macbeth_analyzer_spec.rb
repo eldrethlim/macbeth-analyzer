@@ -1,17 +1,19 @@
-require_relative "../lib/macbeth_analyzer"
+require "spec_helper"
 
 describe MacbethAnalyzer do
 
   before do
     xml_file = File.expand_path("../../spec/support/macbeth.xml", __FILE__)
-    allow(Net::HTTP).to receive(:get).and_return(File.new(xml_file))
+
+    stub_request(:get, MacbethAnalyzer::URL).to_return(body: File.new(xml_file))
   end
+
   let!(:results) { MacbethAnalyzer.new.run }
 
   describe "Run Macbeth Analyzer" do
 
     it "ignores speaker 'ALL'" do
-     expect(results.has_key?("ALL")).to eq(false)
+      expect(results.has_key?("ALL")).to eq(false)
     end
 
     it "returns correct results" do
