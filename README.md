@@ -15,4 +15,4 @@
 
 ```
 
-Upcase ruby exercise - Macbeth Analyzer                                                                                            
+Ruby Exercises - Macbeth Analyzer
